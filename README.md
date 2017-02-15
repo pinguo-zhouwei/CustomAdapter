@@ -1,5 +1,22 @@
 ### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表
 
+
+### Dependencies
+1 Add it in your root build.gradle at the end of repositories:
+```java
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+Step 2. Add the dependency
+```java
+dependencies {
+	  compile 'com.github.pinguo-zhouwei:CustomAdapter:v1.0.0'
+}
+```
   
 ### 理念
 1, 构造一个通用的Adapter模版，避免每添加一个列表就要写一个Adapter,避免写Adapter中的大量重复代码。
