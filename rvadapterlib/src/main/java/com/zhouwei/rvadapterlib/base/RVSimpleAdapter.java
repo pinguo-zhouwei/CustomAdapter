@@ -133,16 +133,39 @@ public class RVSimpleAdapter extends RVBaseAdapter{
      * @param keepCount 保留的条目数量
      */
     public void showLoadingKeepCount(int keepCount){
+        showLoadingKeepCount(keepCount,0);
+    }
+
+    /**
+     * 列表Loading状态显示的View，保留keepCountg个Item，并指定高度
+     * @param keepCount 保留item的个数
+     * @param height View显示的高度
+     */
+    public void showLoadingKeepCount(int keepCount,int height){
+        showLoadingKeepCount(keepCount,height,null);
+    }
+
+    /**
+     * 列表Loading状态显示的View，保留keepCountg个Item，并指定高度，指定显示的View
+     * @param keepCount 保留item的个数
+     * @param height View显示的高度
+     * @param loadingView 显示的View
+     */
+    public void showLoadingKeepCount(int keepCount,int height,View loadingView){
         if(keepCount < 0 || keepCount>mData.size()){
             return;
         }
         remove(keepCount,mData.size() - keepCount);
-        if(mData.contains(mLoadingCell)){
-            mData.remove(mLoadingCell);
-        }
+        checkNotContainSpecailCell();
         mIsShowLoading = true;
+        if(loadingView!=null){
+            mLoadingCell.setView(loadingView);
+        }
+        mLoadingCell.setHeight(height);
         add(mLoadingCell);
     }
+
+
     /**
      * hide Loading view
      */
@@ -154,7 +177,7 @@ public class RVSimpleAdapter extends RVBaseAdapter{
     }
 
     /**
-     * 显示错误提示
+     * 显示错误提示View
      * <p>当网络请求发生错误，需要在界面给出错误提示时，调用{@link #showError}</p>
      * @see #showErrorKeepCount(int)
      */
@@ -165,21 +188,41 @@ public class RVSimpleAdapter extends RVBaseAdapter{
     }
 
     /**
-     * 显示错误提示
+     * 显示错误提示View
      * <p>当网络请求发生错误，需要在界面给出错误提示时，调用{@link #showErrorKeepCount(int)},并保留keepCount 条Item</p>
      * @param keepCount 保留Item数量
      */
     public void showErrorKeepCount(int keepCount){
+        showErrorKeepCount(keepCount,0);
+    }
+
+    /**
+     *  显示错误提示View，并指定保留的item数和View显示的高
+     * @param keepCount 保留的item数
+     * @param height view显示的高
+     */
+    public void showErrorKeepCount(int keepCount,int height){
+        showErrorKeepCount(keepCount,height,null);
+    }
+
+    /**
+     *  显示错误提示View，并指定保留的item数和View显示的高
+     * @param keepCount 保留的item数
+     * @param height view显示的高
+     * @param errorView 指定显示的View，null 则显示默认View
+     */
+    public void showErrorKeepCount(int keepCount,int height,View errorView){
         if(keepCount < 0 || keepCount>mData.size()){
             return;
         }
         remove(keepCount,mData.size() - keepCount);
-        if(mData.contains(mErrorCell)){
-            mData.remove(mErrorCell);
-        }
+        checkNotContainSpecailCell();
         mIsShowError = true;
+        if(errorView!=null){
+            mErrorCell.setView(errorView);
+        }
+        mErrorCell.setHeight(height);
         add(mErrorCell);
-
     }
 
     /**
@@ -256,16 +299,39 @@ public class RVSimpleAdapter extends RVBaseAdapter{
      * @param keepCount
      */
     public void showEmptyKeepCount(int keepCount){
+        showEmptyKeepCount(keepCount,0);
+    }
+
+    /**
+     * 显示空状态View，保留keepCount个Item,并指定View显示的高
+     * @param keepCount 保留的Item个数
+     * @param height View 显示的高度
+     *
+     * @see {@link #showEmptyKeepCount(int)}
+     * @see {@link #showEmptyKeepCount(int, int, View)}
+     */
+    public void showEmptyKeepCount(int keepCount,int height){
+        showEmptyKeepCount(keepCount,height,null);
+    }
+
+    /**
+     * 显示空状态View，保留keepCount个Item,并指定View和View显示的高
+     * @param keepCount 保留的Item个数
+     * @param height 显示的View的高
+     * @param view 显示的View，null 则显示默认View
+     */
+    public void showEmptyKeepCount(int keepCount,int height,View view){
         if(keepCount < 0 || keepCount>mData.size()){
             return;
         }
         remove(keepCount,mData.size() - keepCount);
-        if(mData.contains(mEmptyCell)){
-            mData.remove(mEmptyCell);
-        }
+        checkNotContainSpecailCell();
         mIsShowEmpty = true;
+        if(view !=null){
+            mEmptyCell.setView(view);
+        }
+        mEmptyCell.setHeight(height);
         add(mEmptyCell);
-
     }
 
     /**
@@ -312,6 +378,24 @@ public class RVSimpleAdapter extends RVBaseAdapter{
           remove(mEmptyCell);
           mIsShowEmpty = false;
       }
+    }
+
+    /**
+     * 检查列表是否已经包含了这4种Cell
+     */
+    private void checkNotContainSpecailCell(){
+        if(mData.contains(mEmptyCell)){
+            mData.remove(mEmptyCell);
+        }
+        if(mData.contains(mErrorCell)){
+            mData.remove(mErrorCell);
+        }
+        if(mData.contains(mLoadingCell)){
+            mData.remove(mLoadingCell);
+        }
+        if(mData.contains(mLoadMoreCell)){
+            mData.remove(mLoadMoreCell);
+        }
     }
 
     @Override
