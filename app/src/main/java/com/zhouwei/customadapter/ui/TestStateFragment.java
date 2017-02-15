@@ -35,15 +35,14 @@ public class TestStateFragment extends AbsBaseFragment<Object> {
     private void loadData(){
         mBaseAdapter.addAll(getCells(null));
 
-        showLoading();
+      //  showLoading();
         //showEmpty();
-        //showError();
+        showError();
     }
 
     private void showEmpty(){
         int height = DisplayUtils.getScreenHeight(getContext()) - DisplayUtils.dpToPx(getContext(),300);
        mBaseAdapter.showEmptyKeepCount(1,height);
-       mBaseAdapter.showLoading();
     }
 
     private void showError(){
