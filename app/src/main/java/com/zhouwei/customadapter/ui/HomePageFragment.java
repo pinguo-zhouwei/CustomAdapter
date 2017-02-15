@@ -56,6 +56,7 @@ public class HomePageFragment extends AbsBaseFragment<Entry> {
             public void run() {
                 hideLoadMore();
                 mBaseAdapter.addAll(getCells(mockMoreData()));
+
             }
         },10000);
     }

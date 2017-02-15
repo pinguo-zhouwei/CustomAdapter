@@ -46,7 +46,9 @@ public class BannerCell extends RVBaseCell<List<String>> {
                 return new NetworkImageHolderView();
             }
         }, mData);
-        mConvenientBanner.startTurning(2000);
+        if(!mConvenientBanner.isTurning()){
+            mConvenientBanner.startTurning(2000);
+        }
     }
 
     @Override
