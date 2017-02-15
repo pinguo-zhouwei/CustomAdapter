@@ -1,5 +1,11 @@
 ### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表
 
+  
+### 目的
+1, 构造一个通用的Adapter模版，避免每添加一个列表就要写一个Adapter,避免写Adapter中的大量重复代码。
+2，通过组装的方式来构建Adapter,将每一种(ViewType不同的)Item抽象成一个单独组件，Adapter 就是一个壳，我们只需要向Adapter中添加Item就行，这样做的好处就是减少耦合，去掉一种item 或者添加一种item对于列表是没有任何影响的。
+3,高内聚，低耦合，扩展方便。
+
 
 ### Dependencies
 1 Add it in your root build.gradle at the end of repositories:
@@ -17,11 +23,8 @@ dependencies {
 	  compile 'com.github.pinguo-zhouwei:CustomAdapter:v1.0.0'
 }
 ```
-  
-### 理念
-1, 构造一个通用的Adapter模版，避免每添加一个列表就要写一个Adapter,避免写Adapter中的大量重复代码。
-2，通过组装的方式来构建Adapter,将每一种(ViewType不同的)Item抽象成一个单独组件，Adapter 就是一个壳，我们只需要向Adapter中添加Item就行，这样做的好处就是减少耦合，去掉一种item 或者添加一种item对于列表是没有任何影响的。
-3,高内聚，低耦合，扩展方便。
+
+
 ### 思路
 
 为每一种 viewType 定义一个Cell,Cell就是上面提到的独立组件，它负责创建ViewHolder,数据绑定和逻辑处理。
