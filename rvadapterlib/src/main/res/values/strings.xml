@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RVAdapterLib</string>
+    <string name="error_message">网络错误,请稍后重试</string>
+    <string name="empty_message">暂时还没有数据</string>
 </resources>

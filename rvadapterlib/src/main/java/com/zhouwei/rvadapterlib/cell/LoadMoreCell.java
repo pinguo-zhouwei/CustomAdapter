@@ -25,7 +25,7 @@ public class LoadMoreCell extends RVBaseCell<Object> {
 
     @Override
     public RVBaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.load_more_layout,null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_load_more_layout,null);
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(params);
         return new RVBaseViewHolder(view);

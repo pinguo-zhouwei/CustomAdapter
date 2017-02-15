@@ -1,12 +1,10 @@
 package com.zhouwei.rvadapterlib.cell;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.zhouwei.rvadapterlib.R;
-import com.zhouwei.rvadapterlib.base.RVBaseCell;
 import com.zhouwei.rvadapterlib.base.RVBaseViewHolder;
 import com.zhouwei.rvadapterlib.base.RVSimpleAdapter;
 
@@ -14,19 +12,9 @@ import com.zhouwei.rvadapterlib.base.RVSimpleAdapter;
  * Created by zhouwei on 17/1/23.
  */
 
-public class LoadingCell extends RVBaseCell<Object> {
-    private View mLoadingView;
+public class LoadingCell extends RVAbsStateCell {
     public LoadingCell(Object o) {
         super(o);
-    }
-
-    public void setLoadingView(View loadingView) {
-        mLoadingView = loadingView;
-    }
-
-    @Override
-    public void releaseResource() {
-        mLoadingView = null;
     }
 
     @Override
@@ -35,20 +23,12 @@ public class LoadingCell extends RVBaseCell<Object> {
     }
 
     @Override
-    public RVBaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.loading_layout,null);
-        if(mLoadingView!=null){
-            LinearLayout container = (LinearLayout) view.findViewById(R.id.loading_root);
-            container.removeAllViews();
-            container.addView(mLoadingView);
-        }
-        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        view.setLayoutParams(params);
-        return new RVBaseViewHolder(view);
+    public void onBindViewHolder(RVBaseViewHolder holder, int position) {
+
     }
 
     @Override
-    public void onBindViewHolder(RVBaseViewHolder holder, int position) {
-
+    protected View getDefaultView(Context context) {
+        return LayoutInflater.from(context).inflate(R.layout.rv_loading_layout,null);
     }
 }

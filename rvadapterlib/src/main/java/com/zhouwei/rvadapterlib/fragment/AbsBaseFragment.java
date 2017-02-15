@@ -10,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import java.util.List;
  */
 
 public abstract class AbsBaseFragment<T> extends Fragment {
+    public static final String TAG = "AbsBaseFragment";
     protected RecyclerView mRecyclerView;
     protected RVSimpleAdapter mBaseAdapter;
     private FrameLayout mToolbarContainer;
@@ -38,7 +40,7 @@ public abstract class AbsBaseFragment<T> extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.base_fragment_layout,null);
+        View view =  inflater.inflate(R.layout.rv_base_fragment_layout,null);
         return view;
     }
 
@@ -87,7 +89,7 @@ public abstract class AbsBaseFragment<T> extends Fragment {
                 int itemCount = manager.getItemCount();
                 //因为LoadMore View  是Adapter的一个Item,显示LoadMore 的时候，Item数量＋1了，导致 mLastVisibalePosition == itemCount-1
                 // 判断两次都成立，因此必须加一个判断条件 !mBaseAdapter.isShowLoadMore()
-                if(newState == RecyclerView.SCROLL_STATE_IDLE && mLastVisiblePosition == itemCount-1 && isFullScreen && !mBaseAdapter.isShowLoadMore()){
+                if(newState == RecyclerView.SCROLL_STATE_IDLE && mLastVisiblePosition == itemCount-1 && isFullScreen && canShowLoadMore()){
                    //最后一个Item了
                    mBaseAdapter.showLoadMore();
                    onLoadMore();
@@ -101,6 +103,18 @@ public abstract class AbsBaseFragment<T> extends Fragment {
         }
         onRecyclerViewInitialized();
 
+    }
+
+    /**
+     * 判断是否可以显示LoadMore
+     * @return
+     */
+    private boolean canShowLoadMore(){
+        if(mBaseAdapter.isShowEmpty() || mBaseAdapter.isShowLoadMore()|| mBaseAdapter.isShowError() || mBaseAdapter.isShowLoading()){
+            Log.i(TAG,"can not show loadMore");
+            return false;
+        }
+        return true;
     }
 
     /**
