@@ -1,4 +1,4 @@
-### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表
+### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表。帮你快速构建一个列表
 
   
 ### 目的

@@ -91,7 +91,7 @@ public abstract class AbsBaseFragment<T> extends Fragment {
                 // 判断两次都成立，因此必须加一个判断条件 !mBaseAdapter.isShowLoadMore()
                 if(newState == RecyclerView.SCROLL_STATE_IDLE && mLastVisiblePosition == itemCount-1 && isFullScreen && canShowLoadMore()){
                    //最后一个Item了
-                   mBaseAdapter.showLoadMore();
+                   showLoadMore();
                    onLoadMore();
                 }
             }
@@ -124,6 +124,24 @@ public abstract class AbsBaseFragment<T> extends Fragment {
         if(mBaseAdapter!=null){
             mBaseAdapter.hideLoadMore();
         }
+    }
+
+    /**
+     * show load more progress
+     */
+    private void showLoadMore(){
+       View loadMoreView = customLoadMoreView();
+       if(loadMoreView == null){
+           mBaseAdapter.showLoadMore();
+       }else{
+           mBaseAdapter.showLoadMore(loadMoreView);
+       }
+
+    }
+
+    protected View customLoadMoreView(){
+        //如果需要自定义LoadMore View,子类实现这个方法
+        return null;
     }
 
     /**

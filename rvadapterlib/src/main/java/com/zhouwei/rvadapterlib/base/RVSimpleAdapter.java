@@ -6,6 +6,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zhouwei.rvadapterlib.Utils;
 import com.zhouwei.rvadapterlib.cell.EmptyCell;
 import com.zhouwei.rvadapterlib.cell.ErrorCell;
 import com.zhouwei.rvadapterlib.cell.LoadMoreCell;
@@ -271,8 +272,39 @@ public class RVSimpleAdapter extends RVBaseAdapter{
        if(mData.contains(mLoadMoreCell)){
            return;
        }
+       checkNotContainSpecailCell();
        add(mLoadMoreCell);
        mIsShowLoadMore = true;
+    }
+
+    /**
+     * 指定显示的LoadMore View
+     * @param loadMoreView
+     */
+    public void showLoadMore(View loadMoreView){
+        showLoadMore(loadMoreView,0);
+    }
+
+    /**
+     * 指定显示的LoadMoreView,并指定显示的高度
+     * @param loadMoreView
+     * @param height
+     */
+    public void showLoadMore(View loadMoreView,int height){
+       if(loadMoreView == null){
+           return;
+       }
+       checkNotContainSpecailCell();
+       //设置默认高度
+       if(height == 0){
+           int defaultHeight = Utils.dpToPx(loadMoreView.getContext(),LoadMoreCell.mDefaultHeight);
+           mLoadMoreCell.setHeight(defaultHeight);
+       }else{
+           mLoadMoreCell.setHeight(height);
+       }
+       mLoadMoreCell.setView(loadMoreView);
+       mIsShowLoadMore = true;
+       add(mLoadMoreCell);
     }
 
     /**
