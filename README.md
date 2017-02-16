@@ -1,5 +1,5 @@
 [![Release](https://jitpack.io/v/pinguo-zhouwei/CustomAdapter.svg)](https://jitpack.io/#pinguo-zhouwei/CustomAdapter)
-### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表。快速构建一个列表
+### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表，快速构建一个列表
 
   
 ### 目的
@@ -327,6 +327,7 @@ mBaseAdapter.showLoadMore(loadMoreView);
 效果图看上面演示的瀑布流效果图。
 
 **2,显示loading View**
+
 提供了默认的Loading View，调用代码如下：
  ```java
  mBaseAdapter.showLoading();
@@ -366,6 +367,7 @@ mBaseAdapter.showLoadingKeepCount(1,height,loadingView);
 ```
 
 **3, Error View  和 Empty View**
+
 显示Error View 和Empty View 与Loading View 的显示与隐藏是一样，不在过多讲，直接去看源码，提供了几个方法：
 
 ![error_method.png](http://upload-images.jianshu.io/upload_images/3513995-08ab75a87f417cca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
