@@ -7,7 +7,7 @@
 3,高内聚，低耦合，扩展方便。
 
 
-### Dependencies
+### 添加依赖
 1 Add it in your root build.gradle at the end of repositories:
 ```java
 allprojects {
@@ -20,7 +20,7 @@ allprojects {
 Step 2. Add the dependency
 ```java
 dependencies {
-	  compile 'com.github.pinguo-zhouwei:CustomAdapter:v1.0.0'
+	 compile 'com.github.pinguo-zhouwei:CustomAdapter:v1.0.1'
 }
 ```
 
