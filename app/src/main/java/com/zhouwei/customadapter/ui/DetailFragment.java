@@ -2,7 +2,10 @@ package com.zhouwei.customadapter.ui;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
+import android.view.View;
 
+import com.zhouwei.customadapter.R;
 import com.zhouwei.customadapter.cell.DetailCell;
 import com.zhouwei.customadapter.model.DetailEntry;
 import com.zhouwei.rvadapterlib.base.Cell;
@@ -48,4 +51,9 @@ public class DetailFragment extends AbsBaseFragment<DetailEntry> {
         return cells;
     }
 
+    @Override
+    protected View customLoadMoreView() {
+        View loadMoreView = LayoutInflater.from(getContext()).inflate(R.layout.custeom_load_more_layout,null);
+        return loadMoreView;
+    }
 }
