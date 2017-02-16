@@ -1,4 +1,4 @@
-[![Release](https://jitpack.io/v/User/Repo.svg)](https://jitpack.io/#User/Repo)
+[![Release](https://jitpack.io/v/pinguo-zhouwei/CustomAdapter.svg)](https://jitpack.io/#pinguo-zhouwei/CustomAdapter)
 ### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表。快速构建一个列表
 
   
