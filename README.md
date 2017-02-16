@@ -4,7 +4,9 @@
   
 ### 目的
 1, 构造一个通用的Adapter模版，避免每添加一个列表就要写一个Adapter,避免写Adapter中的大量重复代码。
+
 2，通过组装的方式来构建Adapter,将每一种(ViewType不同的)Item抽象成一个单独组件，Adapter 就是一个壳，我们只需要向Adapter中添加Item就行，这样做的好处就是减少耦合，去掉一种item 或者添加一种item对于列表是没有任何影响的。
+
 3,高内聚，低耦合，扩展方便。
 
 
@@ -18,7 +20,7 @@ allprojects {
 		}
 	}
 ```
-Step 2. Add the dependency
+2 Add the dependency
 ```java
 dependencies {
 	 compile 'com.github.pinguo-zhouwei:CustomAdapter:v1.0.1'
@@ -240,12 +242,14 @@ public class TextCell extends RVBaseCell<Entry> {
 ```
 上面根据实体生成不同的Cell。有三种Cell,BannerCell,ImageCell和TextCell。
 
-**以上4个步骤就能实现一个界面复杂包含多做Item的列表了**效果图如下：
+**以上4个步骤就能实现一个界面复杂包含多做Item的列表了**
+
+效果图如下：
 
 
 ![adapter_cell](image/adapter_cell.gif)
 
-##### Grid 列表和瀑布流列表：
+### Grid 列表和瀑布流列表：
 上面演示了添加多Item type 的列表，添加单Item的列表也是一样的，只不过只有一个Cell而已。添加Grid 列表和瀑布流列表差不多的，只是RecylerView 的LayoutManager不同而已。
 
 瀑布流列表示例：
@@ -296,6 +300,7 @@ public class DetailFragment extends AbsBaseFragment<DetailEntry> {
 ### 其它演示示例：LoadMore View 、Loading View 、Error View ，Empty View 
 
 **1,显示LoadMore View**
+
 提供了默认的Loading View，调用代码如下：
 ```java
  mBaseAdapter.showLoadMore();
