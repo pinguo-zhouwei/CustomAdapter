@@ -1,4 +1,5 @@
-### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表。帮你快速构建一个列表
+[![Release](https://jitpack.io/v/User/Repo.svg)](https://jitpack.io/#User/Repo)
+### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表。快速构建一个列表
 
   
 ### 目的
@@ -287,12 +288,28 @@ public class DetailFragment extends AbsBaseFragment<DetailEntry> {
 ![stagger_adapter_cell.gif](http://upload-images.jianshu.io/upload_images/3513995-b0a50896ce440b8a.gif?imageMogr2/auto-orient/strip)
 
 
-### 其它演示示例：加载更多、Loading View 、Error View ，Empty View 
+### 其它演示示例：LoadMore View 、Loading View 、Error View ，Empty View 
 
-**1,显示LoadMoreView**
-提供了默认的LoadingView，调用代码如下：
+**1,显示LoadMore View**
+提供了默认的Loading View，调用代码如下：
 ```java
  mBaseAdapter.showLoadMore();
+```
+如果不想用默认的LoadMore View，当然也可以自定义LoadMore View，Adapter 提供方法：
+```java
+mBaseAdapter.showLoadMore(loadMoreView);
+```
+像上面这样提供一个LoadMore View 的布局，还有一个重载的方法，可以指定显示的高度：
+```java
+   mBaseAdapter.showLoadMore(loadMoreView,100);
+```
+如果是继承的AbsBaseFragment 创建列表，实现customLoadMoreView方法就ok了：
+```java
+ @Override
+    protected View customLoadMoreView() {
+        View loadMoreView = LayoutInflater.from(getContext()).inflate(R.layout.custeom_load_more_layout,null);
+        return loadMoreView;
+    }
 ```
 隐藏LoadMore View 调用如下代码：
 
