@@ -31,13 +31,18 @@ dependencies {
 ### 思路
 
 为每一种 viewType 定义一个Cell,Cell就是上面提到的独立组件，它负责创建ViewHolder,数据绑定和逻辑处理。
-它有2个重要的方法，onCreateViewHolder 负责创建ViewHolder,onBindViewHolder负责数据绑定，这两个方法的定义和生命周期同Adapter种的2个方法一样，事实上,Adapter 中的onCreateViewHolder和onBindViewHolder 最终调用的是Cell中的方法。
+它有2个重要的方法，onCreateViewHolder 负责创建ViewHolder,onBindViewHolder负责数据绑定，这两个方法的定义和生命周期同Adapter种的2个方法一样，
+事实上,Adapter 中的onCreateViewHolder和onBindViewHolder 最终调用的是Cell中的方法。**, 就像是Adapter上面有很多插槽，我们将一个个Cell插到Adapter上，即插即用。完全解耦，以后添加需求和砍掉需求，只需要增加一种Cell 或者减少一种Cell就行。**
+
+
 ![new_adapter](image/new_adapter.png)
+
 
 ### 详细介绍
 
  详细介绍请看博客：
  1,[RecyclerView 之Adapter的简化过程浅析](http://www.jianshu.com/p/3e60147523e1)
+ 
  2,[RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表](http://www.jianshu.com/p/727c18f4bf20)
  
 ### 特性
