@@ -107,10 +107,8 @@ public   abstract class RVBaseAdapter<C extends RVBaseCell>  extends RecyclerVie
         if((start +count) > mData.size()){
             return;
         }
-        int size = getItemCount();
-        for(int i =start;i<size;i++){
-            mData.remove(i);
-        }
+
+        mData.subList(start,start+count).clear();
 
         notifyItemRangeRemoved(start,count);
     }
