@@ -28,7 +28,10 @@ dependencies {
 }
 ```
 
+### Change Log
 
+  v1.0.2 : 修复了调用Adapter 的remove(int,int)方法会crush 
+  
 ### 思路
 
 为每一种 viewType 定义一个Cell,Cell就是上面提到的独立组件，它负责创建ViewHolder,数据绑定和逻辑处理。
@@ -42,6 +45,7 @@ dependencies {
 ### 详细介绍
 
  详细介绍请看博客：
+ 
  1,[RecyclerView 之Adapter的简化过程浅析](http://www.jianshu.com/p/3e60147523e1)
  
  2,[RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表](http://www.jianshu.com/p/727c18f4bf20)
