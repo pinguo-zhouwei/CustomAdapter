@@ -1,7 +1,8 @@
 [![Release](https://jitpack.io/v/pinguo-zhouwei/CustomAdapter.svg)](https://jitpack.io/#pinguo-zhouwei/CustomAdapter)
 ### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表，快速构建一个列表
 
-  
+### Change Log
+  v1.0.2 : 修复了调用Adapter 的remove(int,int)方法会crush 
 ### 目的
 1, 构造一个通用的Adapter模版，避免每添加一个列表就要写一个Adapter,避免写Adapter中的大量重复代码。
 
@@ -23,7 +24,7 @@ allprojects {
 2 Add the dependency
 ```java
 dependencies {
-	 compile 'com.github.pinguo-zhouwei:CustomAdapter:v1.0.1'
+	 compile 'com.github.pinguo-zhouwei:CustomAdapter:v1.0.2'
 }
 ```
 
