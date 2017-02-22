@@ -1,9 +1,8 @@
 [![Release](https://jitpack.io/v/pinguo-zhouwei/CustomAdapter.svg)](https://jitpack.io/#pinguo-zhouwei/CustomAdapter)
 ### RecyclerView Adapter 优雅封装，一个Adapter搞定所有列表，快速构建一个列表
 
-### Change Log
-  v1.0.2 : 修复了调用Adapter 的remove(int,int)方法会crush 
 ### 目的
+
 1, 构造一个通用的Adapter模版，避免每添加一个列表就要写一个Adapter,避免写Adapter中的大量重复代码。
 
 2，通过组装的方式来构建Adapter,将每一种(ViewType不同的)Item抽象成一个单独组件，Adapter 就是一个壳，我们只需要向Adapter中添加Item就行，这样做的好处就是减少耦合，去掉一种item 或者添加一种item对于列表是没有任何影响的。
