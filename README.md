@@ -23,13 +23,15 @@ allprojects {
 2 Add the dependency
 ```java
 dependencies {
-	 compile 'com.github.pinguo-zhouwei:CustomAdapter:v1.0.2'
+	 compile 'com.github.pinguo-zhouwei:CustomAdapter:v1.0.3'
 }
 ```
 
 ### Change Log
 
-  v1.0.2 : 修复了调用Adapter 的remove(int,int)方法会crush 
+  * v1.0.2 : 修复了调用Adapter 的remove(int,int)方法会crush 
+  
+  * v1.0.3 : 修复使用AbsBaseFragment 无数据时，下拉刷新crush的bug
   
 ### 思路
 
