@@ -1,5 +1,6 @@
 package com.zhouwei.customadapter.cell;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -31,7 +32,13 @@ public class ImageCell extends RVBaseCell<Entry> {
 
     @Override
     public void onBindViewHolder(RVBaseViewHolder holder, int position) {
+        Log.e("zhouwei","ImageCell onBindViewHolder");
         Picasso.with(holder.getItemView().getContext()).load(mData.imageUrl).into(holder.getImageView(R.id.image));
     }
 
+    @Override
+    public void releaseResource() {
+        super.releaseResource();
+        Log.e("zhouwei","ImageCell releaseResource");
+    }
 }

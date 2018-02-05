@@ -80,6 +80,9 @@ public abstract class AbsBaseFragment<T> extends Fragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 View firstView = recyclerView.getChildAt(0);
+                if(firstView == null){
+                    return;
+                }
                 int top = firstView.getTop();
                 int topEdge = recyclerView.getPaddingTop();
                 //判断RecyclerView 的ItemView是否满屏，如果不满一屏，上拉不会触发加载更多

@@ -28,7 +28,7 @@ public class DetailFragment extends AbsBaseFragment<DetailEntry> {
 
     @Override
     public void onPullRefresh() {
-
+       mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override

@@ -1,10 +1,11 @@
 package com.zhouwei.customadapter.cell;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.zhouwei.customadapter.model.Entry;
 import com.zhouwei.customadapter.R;
+import com.zhouwei.customadapter.model.Entry;
 import com.zhouwei.rvadapterlib.base.RVBaseCell;
 import com.zhouwei.rvadapterlib.base.RVBaseViewHolder;
 
@@ -30,6 +31,13 @@ public class TextCell extends RVBaseCell<Entry> {
 
     @Override
     public void onBindViewHolder(RVBaseViewHolder holder, int position) {
+        Log.e("zhouwei","TextCell onBindViewHolder");
        holder.setText(R.id.text_content,mData.content);
+    }
+
+    @Override
+    public void releaseResource() {
+        super.releaseResource();
+        Log.e("zhouwei","TextCell releaseResource");
     }
 }
